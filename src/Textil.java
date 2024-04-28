@@ -18,4 +18,3 @@ public class Textil extends Producte{
         this.composocioTextil = composocioTextil;
     }
 }
-
