@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.io.*;
 
 public class Sapamercat {
 
@@ -28,6 +29,14 @@ public class Sapamercat {
             } else {System.exit(1);}
         } catch (Exception e){
             System.out.println("ERROR! - Has d'introduir un numero!");
+            try{
+                File log = new File("src\\logs\\Exceptions.dat");
+                FileWriter writer = new FileWriter(log, true);
+                writer.write("ERROR! - Has d'introduir un numero!\n");
+                writer.close();
+            } catch (Exception x) {
+                System.out.println("S'ha produit un error!");
+            }
         } finally {
             menu();
         }
@@ -53,6 +62,14 @@ public class Sapamercat {
             }
         }   catch (Exception e){
             System.out.println("ERROR! - Has d'introduir un numero!");
+            try{
+                File log = new File("src\\logs\\Exceptions.dat");
+                FileWriter writer = new FileWriter(log, true);
+                writer.write("ERROR! - Has d'introduir un numero!\n");
+                writer.close();
+            } catch (Exception x) {
+                System.out.println("S'ha produit un error!");
+            }
         }   finally {
             menu();
         }
@@ -61,9 +78,9 @@ public class Sapamercat {
     //Metode per comprobar si el producte que volem afegir ja l'hem introduit previament
     public static boolean comprovarProducte(int codiBarres){
         for (int k : Productes.keySet()){
-            if (k == codiBarres) return false;
+            if (k == codiBarres) return true;
         }
-        return true;
+        return false;
     }
 
     //Menu per afegir productes d'alimentació
@@ -83,13 +100,26 @@ public class Sapamercat {
             int quantitat = resposta.nextInt();
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
-            if (comprovarProducte(codiBarres) && Productes.size() <= LIMITPRODUCTES) {
-                Productes.put(codiBarres, new Alimentacio(nom, preu, codiBarres, quantitat, data));
-            } else {
+            if (comprovarProducte(codiBarres)) {
                 System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+            } else if(nom.length() > 15){
+                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+            } else if(Productes.size() > LIMITPRODUCTES){
+                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+            } else {
+                Productes.put(codiBarres, new Alimentacio(nom, preu, codiBarres, quantitat, data));
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            try{
+                File path = new File("src\\logs\\Exceptions.dat");
+                FileWriter log = new FileWriter(path, true);
+                LocalDate dataActual = LocalDate.now();
+                log.write(dataActual + "    ERROR! - L'ultim parametre introduit es incorrecte!\n");
+                log.close();
+            } catch (Exception x) {
+                System.out.println("S'ha produit un error!");
+            }
         } finally {
             menu();
         }
@@ -110,13 +140,25 @@ public class Sapamercat {
             int quantitat = resposta.nextInt();
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
-            if (comprovarProducte(codiBarres) && Productes.size() <= LIMITPRODUCTES) {
-                Productes.put(codiBarres, new Textil(nom, preu, codiBarres, quantitat, composicio));
-            } else {
+            if (comprovarProducte(codiBarres)) {
                 System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+            } else if(nom.length() > 15){
+                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+            } else if(Productes.size() > LIMITPRODUCTES){
+                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+            } else {
+                Productes.put(codiBarres, new Textil(nom, preu, codiBarres, quantitat, composicio));
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            try{
+                File log = new File("src\\logs\\Exceptions.dat");
+                FileWriter writer = new FileWriter(log, true);
+                writer.write("ERROR! - L'ultim parametre introduit es incorrecte!");
+                writer.close();
+            } catch (Exception x) {
+                System.out.println("S'ha produit un error!");
+            }
         } finally {
             menu();
         }
@@ -137,13 +179,26 @@ public class Sapamercat {
             int quantitat = resposta.nextInt();
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
-            if (comprovarProducte(codiBarres) && Productes.size() <= LIMITPRODUCTES) {
-                Productes.put(codiBarres, new Electronica(nom, preu, codiBarres, quantitat, garantia));
-            } else {
+            if (comprovarProducte(codiBarres)) {
                 System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+            } else if(nom.length() > 15){
+                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+            } else if(Productes.size() > LIMITPRODUCTES){
+                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+            } else {
+                Productes.put(codiBarres, new Electronica(nom, preu, codiBarres, quantitat, garantia));
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            try{
+                File log = new File("src\\logs\\Exceptions.dat");
+                FileWriter writer = new FileWriter(log, true);
+                writer.write("ERROR! - L'ultim parametre introduit es incorrecte!");
+                writer.close();
+            } catch (Exception x) {
+                System.out.println("S'ha produit un error!");
+            }
+
         } finally {
             menu();
         }

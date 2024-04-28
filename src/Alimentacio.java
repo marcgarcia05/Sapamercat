@@ -18,8 +18,7 @@ public class Alimentacio extends Producte{
     public float getPreu(){
         LocalDate dataActual = LocalDate.now();
         int diferencia = (int) ChronoUnit.DAYS.between(dataActual, dataCaducitat);
-        float preuOk = (float) (preu - preu * (1/ diferencia + 1) + (preu * 0.1));
-        return preuOk;
+        return (float) (preu - preu * (1/ diferencia + 1) + (preu * 0.1));
     }
 
     //Setters

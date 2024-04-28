@@ -15,8 +15,7 @@ public class Electronica extends Producte {
 
     @Override
     public float getPreu() {
-        preu = (float) (preu + preu * (diesGarantia / 365) * 0.1);
-        return preu;
+        return (float) (preu + preu * (diesGarantia / 365) * 0.1);
     }
 
     //Setters
