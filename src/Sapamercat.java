@@ -3,8 +3,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Sapamercat {
+
+    //Variable Final per limitar el carret a 100 productes
     public static final int LIMITPRODUCTES = 100;
 
+    //Hasmap on guardarem els productes que el client anira afegint
     public static HashMap<Integer, Producte> Productes = new HashMap<Integer, Producte>();
 
 
@@ -37,6 +40,7 @@ public class Sapamercat {
         System.out.println("1) Alimentació\n2) Tèxtil\n3) Electrònica\n0) Tornar");
         int seleccionat = i.nextInt();
         Scanner resposta = new Scanner(System.in);
+        //Control d'errors
         try{
             if (seleccionat == 1){
                 afegirAlimentacio(resposta);
@@ -54,7 +58,7 @@ public class Sapamercat {
         }
     }
 
-
+    //Metode per comprobar si el producte que volem afegir ja l'hem introduit previament
     public static boolean comprovarProducte(int codiBarres){
         for (int k : Productes.keySet()){
             if (k == codiBarres) return false;
@@ -64,6 +68,7 @@ public class Sapamercat {
 
     //Menu per afegir productes d'alimentació
     public static void afegirAlimentacio(Scanner resposta) throws Exception {
+        //Control d'errors
         try {
             System.out.println("Afegir aliment");
             System.out.println("Nom producte: ");
@@ -92,6 +97,7 @@ public class Sapamercat {
     }
     //Menu per afegir productes textils
     public static void afegirTextil(Scanner resposta) throws Exception {
+        //Control d'errors
         try {
             System.out.println("Afegir tèxtil");
             System.out.println("Nom producte: ");
@@ -118,6 +124,7 @@ public class Sapamercat {
     }
     //Menu per afegir productes d'electronica
     public static void afegirElectronica(Scanner resposta) throws Exception {
+        //Control d'errors
         try {
             System.out.println("Afegir Electronica");
             System.out.println("Nom producte: ");
@@ -143,6 +150,7 @@ public class Sapamercat {
         menu();
     }
 
+    //Metode que imprimeix tiquet
     public static void pasarCaixa() throws Exception {
         LocalDate dataActual = LocalDate.now();
         System.out.println("--------------\nSAPAMERCAT\n--------------");
@@ -155,7 +163,7 @@ public class Sapamercat {
         System.out.println("--------------\nTotal: " + total);
         Productes.clear();
     }
-
+    //Metode que mostra els productes que tenim actualment al carret
     public static void mostrarCarret() throws Exception {
         System.out.println("Carret");
         Productes.forEach((k, v) -> System.out.println(v.getNom() + " -> " + v.getQuantitat()));

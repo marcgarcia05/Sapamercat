@@ -4,6 +4,7 @@ public class Producte {
     int codiBarres;
     int quantitat;
 
+    //Constructor
     public Producte(String nom, float preu, int codiBarres, int quantitat) {
         this.nom = nom;
         this.preu = preu;

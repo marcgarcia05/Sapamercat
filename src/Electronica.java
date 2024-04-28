@@ -2,6 +2,7 @@ public class Electronica extends Producte {
 
     int diesGarantia;
 
+    //Constructor
     public Electronica(String nom, float preu, int codiBarres, int quantitat, int diesGarantia) throws Exception {
         super(nom, preu, codiBarres, quantitat);
         this.diesGarantia = diesGarantia;

@@ -3,6 +3,7 @@ import java.time.temporal.ChronoUnit;
 public class Alimentacio extends Producte{
     LocalDate dataCaducitat;
 
+    //Constructor
     public Alimentacio(String nom, float preu, int codiBarres, int quantitat, LocalDate dataCaducitat) throws Exception {
         super(nom, preu, codiBarres, quantitat);
         this.dataCaducitat = dataCaducitat;
