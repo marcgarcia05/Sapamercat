@@ -147,6 +147,20 @@ public class Sapamercat {
             } else if(Productes.size() > LIMITPRODUCTES){
                 System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
             } else {
+                try{
+                    File update = new File("src\\updates\\UpdateTextilPrices.dat");
+                    Scanner reader = new Scanner(update);
+                    while (reader.hasNextLine()) {
+                        String p = reader.nextLine();
+                        String[] producte = p.split(",");
+                        if (Objects.equals(producte[0], Integer.toString(codiBarres))){
+                            preu = Integer.valueOf(producte[1]);
+                        }
+                    }
+                    reader.close();
+                } catch (Exception x) {
+                    System.out.println("S'ha produit un error al comprovar el preu!");
+                }
                 Productes.put(codiBarres, new Textil(nom, preu, codiBarres, quantitat, composicio));
             }
         } catch (Exception e) {
