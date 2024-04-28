@@ -2,8 +2,8 @@ public class Electronica extends Producte {
 
     int diesGarantia;
 
-    public Electronica(String nom, float preu, int codiBarres, int diesGarantia) throws Exception {
-        super(nom, preu, codiBarres);
+    public Electronica(String nom, float preu, int codiBarres, int quantitat, int diesGarantia) throws Exception {
+        super(nom, preu, codiBarres, quantitat);
         this.diesGarantia = diesGarantia;
     }
 
