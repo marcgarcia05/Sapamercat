@@ -29,10 +29,12 @@ public class Sapamercat {
             } else {System.exit(1);}
         } catch (Exception e){
             System.out.println("ERROR! - Has d'introduir un numero!");
+            //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
-                writer.write("ERROR! - Has d'introduir un numero!\n");
+                LocalDate dataActual = LocalDate.now();
+                writer.write(dataActual + "     ERROR! - Has d'introduir un numero!\n");
                 writer.close();
             } catch (Exception x) {
                 System.out.println("S'ha produit un error!");
@@ -62,10 +64,12 @@ public class Sapamercat {
             }
         }   catch (Exception e){
             System.out.println("ERROR! - Has d'introduir un numero!");
+            //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
-                writer.write("ERROR! - Has d'introduir un numero!\n");
+                LocalDate dataActual = LocalDate.now();
+                writer.write(dataActual + "     ERROR! - Has d'introduir un numero!\n");
                 writer.close();
             } catch (Exception x) {
                 System.out.println("S'ha produit un error!");
@@ -111,6 +115,7 @@ public class Sapamercat {
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File path = new File("src\\logs\\Exceptions.dat");
                 FileWriter log = new FileWriter(path, true);
@@ -147,6 +152,7 @@ public class Sapamercat {
             } else if(Productes.size() > LIMITPRODUCTES){
                 System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
             } else {
+                //Comprovem que el preu introduit per l'usuari es correcte
                 try{
                     File update = new File("src\\updates\\UpdateTextilPrices.dat");
                     Scanner reader = new Scanner(update);
@@ -165,10 +171,12 @@ public class Sapamercat {
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
-                writer.write("ERROR! - L'ultim parametre introduit es incorrecte!");
+                LocalDate dataActual = LocalDate.now();
+                writer.write(dataActual + "     ERROR! - L'ultim parametre introduit es incorrecte!");
                 writer.close();
             } catch (Exception x) {
                 System.out.println("S'ha produit un error!");
@@ -204,10 +212,12 @@ public class Sapamercat {
             }
         } catch (Exception e) {
             System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
-                writer.write("ERROR! - L'ultim parametre introduit es incorrecte!");
+                LocalDate dataActual = LocalDate.now();
+                writer.write(dataActual + "     ERROR! - L'ultim parametre introduit es incorrecte!");
                 writer.close();
             } catch (Exception x) {
                 System.out.println("S'ha produit un error!");
