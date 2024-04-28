@@ -8,12 +8,12 @@ public class Sapamercat {
     //Variable Final per limitar el carret a 100 productes
     public static final int LIMITPRODUCTES = 100;
 
-    //Hasmap on guardarem els productes que el client anira afegint
+    //Hasmap on guardarem els productes que el client anirà afegint
     public static HashMap<Integer, Producte> Productes = new HashMap<Integer, Producte>();
 
 
-    //Mostrem el menu principal
-    public static void menu() throws Exception {
+    //Mostrem el menú principal
+    public static void menu() {
         Scanner i = new Scanner(System.in);
         System.out.println("-----------\n-- INICI --\n-----------");
         System.out.println("1) Introduir producte\n2) Passar per caixa\n3) Mostrar carret de compra\n0) Acabar");
@@ -28,24 +28,24 @@ public class Sapamercat {
                 mostrarCarret();
             } else {System.exit(1);}
         } catch (Exception e){
-            System.out.println("ERROR! - Has d'introduir un numero!");
+            System.out.println("ERROR! - Has d'introduir un número!");
             //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
                 LocalDate dataActual = LocalDate.now();
-                writer.write(dataActual + "     ERROR! - Has d'introduir un numero!\n");
+                writer.write(dataActual + "     ERROR! - Has d'introduir un número!\n");
                 writer.close();
             } catch (Exception x) {
-                System.out.println("S'ha produit un error!");
+                System.out.println("S'ha produït un error!");
             }
         } finally {
             menu();
         }
     }
 
-    //Mostrem el menu de productes
-    public static void menuProductes() throws Exception {
+    //Mostrem el menú de productes
+    public static void menuProductes() {
         Scanner i = new Scanner(System.in);
         System.out.println("\n--------------\n-- PRODUCTE --\n--------------");
         System.out.println("1) Alimentació\n2) Tèxtil\n3) Electrònica\n0) Tornar");
@@ -63,23 +63,23 @@ public class Sapamercat {
                 menu();
             }
         }   catch (Exception e){
-            System.out.println("ERROR! - Has d'introduir un numero!");
+            System.out.println("ERROR! - Has d'introduir un número!");
             //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
                 LocalDate dataActual = LocalDate.now();
-                writer.write(dataActual + "     ERROR! - Has d'introduir un numero!\n");
+                writer.write(dataActual + "     ERROR! - Has d'introduir un número!\n");
                 writer.close();
             } catch (Exception x) {
-                System.out.println("S'ha produit un error!");
+                System.out.println("S'ha produït un error!");
             }
         }   finally {
             menu();
         }
     }
 
-    //Metode per comprobar si el producte que volem afegir ja l'hem introduit previament
+    //Mètode per comprovar si el producte que volem afegir ja l'hem introduït prèviament
     public static boolean comprovarProducte(int codiBarres){
         for (int k : Productes.keySet()){
             if (k == codiBarres) return true;
@@ -87,8 +87,8 @@ public class Sapamercat {
         return false;
     }
 
-    //Menu per afegir productes d'alimentació
-    public static void afegirAlimentacio(Scanner resposta) throws Exception {
+    //Menú per afegir productes d'alimentació
+    public static void afegirAlimentacio(Scanner resposta) {
         //Control d'errors
         try {
             System.out.println("Afegir aliment");
@@ -105,33 +105,33 @@ public class Sapamercat {
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
             if (comprovarProducte(codiBarres)) {
-                System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+                System.out.println("ERROR! - Aquest producte ja està afegit al carret!");
             } else if(nom.length() > 15){
-                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+                System.out.println("ERROR! - El nom del producte no pot tenir més de 15 caràcters!");
             } else if(Productes.size() > LIMITPRODUCTES){
-                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+                System.out.println("ERROR! - Has arribat al límit de productes (100), per continuar, has de passar per caixa primer");
             } else {
                 Productes.put(codiBarres, new Alimentacio(nom, preu, codiBarres, quantitat, data));
             }
         } catch (Exception e) {
-            System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            System.out.println("ERROR! - L'últim paràmetre introduït és incorrecte!");
             //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File path = new File("src\\logs\\Exceptions.dat");
                 FileWriter log = new FileWriter(path, true);
                 LocalDate dataActual = LocalDate.now();
-                log.write(dataActual + "    ERROR! - L'ultim parametre introduit es incorrecte!\n");
+                log.write(dataActual + "    ERROR! - L'últim paràmetre introduït és incorrecte!\n");
                 log.close();
             } catch (Exception x) {
-                System.out.println("S'ha produit un error!");
+                System.out.println("S'ha produït un error!");
             }
         } finally {
             menu();
         }
         menu();
     }
-    //Menu per afegir productes textils
-    public static void afegirTextil(Scanner resposta) throws Exception {
+    //Menú per afegir productes tèxtils
+    public static void afegirTextil(Scanner resposta) {
         //Control d'errors
         try {
             System.out.println("Afegir tèxtil");
@@ -146,13 +146,13 @@ public class Sapamercat {
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
             if (comprovarProducte(codiBarres)) {
-                System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+                System.out.println("ERROR! - Aquest producte ja està afegit al carret!");
             } else if(nom.length() > 15){
-                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+                System.out.println("ERROR! - El nom del producte no pot tenir més de 15 caràcters!");
             } else if(Productes.size() > LIMITPRODUCTES){
-                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+                System.out.println("ERROR! - Has arribat al límit de productes (100), per continuar, has de passar per caixa primer");
             } else {
-                //Comprovem que el preu introduit per l'usuari es correcte
+                //Comprovem que el preu introduït per l'usuari és correcte
                 try{
                     File update = new File("src\\updates\\UpdateTextilPrices.dat");
                     Scanner reader = new Scanner(update);
@@ -165,32 +165,32 @@ public class Sapamercat {
                     }
                     reader.close();
                 } catch (Exception x) {
-                    System.out.println("S'ha produit un error al comprovar el preu!");
+                    System.out.println("S'ha produït un error al comprovar el preu!");
                 }
                 Productes.put(codiBarres, new Textil(nom, preu, codiBarres, quantitat, composicio));
             }
         } catch (Exception e) {
-            System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            System.out.println("ERROR! - L'últim paràmetre introduït és incorrecte!");
             //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
                 LocalDate dataActual = LocalDate.now();
-                writer.write(dataActual + "     ERROR! - L'ultim parametre introduit es incorrecte!");
+                writer.write(dataActual + "     ERROR! - L'últim paràmetre introduït és incorrecte!");
                 writer.close();
             } catch (Exception x) {
-                System.out.println("S'ha produit un error!");
+                System.out.println("S'ha produït un error!");
             }
         } finally {
             menu();
         }
         menu();
     }
-    //Menu per afegir productes d'electronica
-    public static void afegirElectronica(Scanner resposta) throws Exception {
+    //Menú per afegir productes d'electrònica
+    public static void afegirElectronica(Scanner resposta) {
         //Control d'errors
         try {
-            System.out.println("Afegir Electronica");
+            System.out.println("Afegir Electrònica");
             System.out.println("Nom producte: ");
             String nom = resposta.nextLine();
             System.out.println("Preu: ");
@@ -202,25 +202,25 @@ public class Sapamercat {
             System.out.println("Codi de barres: ");
             int codiBarres = resposta.nextInt();
             if (comprovarProducte(codiBarres)) {
-                System.out.println("ERROR! - Aquest producte ja esta afegit al carret!");
+                System.out.println("ERROR! - Aquest producte ja està afegit al carret!");
             } else if(nom.length() > 15){
-                System.out.println("ERROR! - El nom del producte no pot tenir mes de 15 caracters!");
+                System.out.println("ERROR! - El nom del producte no pot tenir més de 15 caràcters!");
             } else if(Productes.size() > LIMITPRODUCTES){
-                System.out.println("ERROR! - Has arribat al limit de productes (100), per continuar, has de pasar per caixa primer");
+                System.out.println("ERROR! - Has arribat al límit de productes (100), per continuar, has de passar per caixa primer");
             } else {
                 Productes.put(codiBarres, new Electronica(nom, preu, codiBarres, quantitat, garantia));
             }
         } catch (Exception e) {
-            System.out.println("ERROR! - L'ultim parametre introduit es incorrecte!");
+            System.out.println("ERROR! - L'últim paràmetre introduït és incorrecte!");
             //Registrem l'error a l'arxiu "Exceptions.dat"
             try{
                 File log = new File("src\\logs\\Exceptions.dat");
                 FileWriter writer = new FileWriter(log, true);
                 LocalDate dataActual = LocalDate.now();
-                writer.write(dataActual + "     ERROR! - L'ultim parametre introduit es incorrecte!");
+                writer.write(dataActual + "     ERROR! - L'últim paràmetre introduït és incorrecte!");
                 writer.close();
             } catch (Exception x) {
-                System.out.println("S'ha produit un error!");
+                System.out.println("S'ha produït un error!");
             }
 
         } finally {
@@ -229,8 +229,8 @@ public class Sapamercat {
         menu();
     }
 
-    //Metode que imprimeix tiquet
-    public static void pasarCaixa() throws Exception {
+    //Mètode que imprimeix tiquet
+    public static void pasarCaixa() {
         LocalDate dataActual = LocalDate.now();
         System.out.println("--------------\nSAPAMERCAT\n--------------");
         System.out.println("Data: " + dataActual + "\n--------------");
@@ -242,14 +242,14 @@ public class Sapamercat {
         System.out.println("--------------\nTotal: " + total);
         Productes.clear();
     }
-    //Metode que mostra els productes que tenim actualment al carret
-    public static void mostrarCarret() throws Exception {
+    //Mètode que mostra els productes que tenim actualment al carret
+    public static void mostrarCarret() {
         System.out.println("Carret");
         Productes.forEach((k, v) -> System.out.println(v.getNom() + " -> " + v.getQuantitat()));
         menu();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println("BENVINGUT AL SAPAMERCAT");
         menu();
     }
