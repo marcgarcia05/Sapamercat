@@ -3,6 +3,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.*;
 
+//Exercici 5 Practica 1 M5
+
 public class Sapamercat {
 
     //Variable Final per limitar el carret a 100 productes
